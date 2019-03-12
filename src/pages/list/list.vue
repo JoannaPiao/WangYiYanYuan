@@ -10,42 +10,16 @@
     <div class="list">
       <!--左边list-->
       <div class="list-left">
-        <a href="javascript:;">推荐专区</a>
-        <a href="javascript:;">春季专区</a>
-        <a href="javascript:;">爆品专区</a>
-        <a href="javascript:;">新品专区</a>
-      </div>
-      <!--右边list-->
-      <div class="list-right">
-        <div class="list-wrap">
-          <div class="list-pic"
-               style="background-image:url(http://yanxuan.nosdn.127.net/d723607e0cbb0c4a11c9396612c71d9b.jpg?imageView&thumbnail=0x196&quality=75);">
-          </div>
-          <div class="list-img">
-            <a href="javascript:;">
-              <img src="./images/list1.png" alt="">
-              <span>每日特惠好货</span>
-            </a>
-            <a href="javascript:;">
-              <img src="./images/list2.png" alt="">
-              <span>美食三件7.5折</span>
-            </a>
-            <a href="javascript:;">
-              <img src="./images/list3.png" alt="">
-              <span>天天315</span>
-            </a>
-            <a href="javascript:;">
-              <img src="./images/list4.png" alt="">
-              <span>每日特惠好货</span>
-            </a>
-            <a href="javascript:;">
-              <img src="./images/list4.png" alt="">
-              <span>每日特惠好货</span>
-            </a>
+        <a href="javascript:;" v-for="item in list" :key="item.id">
+          <!--声明式导航-->
+          <router-link :to="'/list/items?listId='+item.id">
+            {{item.name}}
+          </router-link>
 
-          </div>
-        </div>
+        </a>
+
       </div>
+      <router-view/>
     </div>
 
 
@@ -53,12 +27,23 @@
 </template>
 
 <script>
-  export default {}
+  import {mapState} from 'vuex'
+
+  export default {
+    methods: {},
+    computed: {
+      ...mapState(['list', 'categorys'])
+    },
+    mounted () {
+      this.$store.dispatch('getCategoryL1List')
+      this.$store.dispatch('getCategoryL2List')
+    }
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   #container
-    height 5000px
+    height 1500px
     background-color #fff
     /*头部*/
     .headerInput
@@ -85,7 +70,6 @@
         span
           font-size 28px
           color #666
-
     .list
       display flex
       .list-left
@@ -102,7 +86,7 @@
           line-height 50px
           color #ab2b2b
           font-size 28px
-          border-left 6px solid #ab2b2b
+      /*border-left 6px solid #ab2b2b*/
       .list-right
         position relative
         width 588px
@@ -123,7 +107,7 @@
             height 192px
           .list-img
             width 528px
-            height 864px
+            height 432px
             /*background-color greenyellow*/
             margin-top 30px
             display flex

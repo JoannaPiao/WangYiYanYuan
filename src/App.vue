@@ -7,7 +7,6 @@
 
 <script>
   import FooterGuide from './components/FooterGuide/FooterGuide'
-
   export default {
 
     components: {
