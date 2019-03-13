@@ -4,7 +4,10 @@
  */
 
 import ajax from './ajax'
-export const reqCurrentCategory =()=>ajax('/currentCategory')
-export const reqCategoryGroupList =()=>ajax('/categoryGroupList')
-export const reqCategoryL1List =()=>ajax('/categoryL1List')
-export const reqCategoryL2List =()=>ajax('/categoryL2List')
+
+const prefix = '/api'
+export const reqCurrentCategory = () => ajax('/currentCategory')
+export const reqCategoryGroupList = () => ajax('/categoryGroupList')
+export const reqCategoryL1List = () => ajax('/categoryL1List')
+export const reqCategoryL2List = () => ajax('/categoryL2List')
+export const reqInitSearch = () => ajax(`${prefix}/xhr/search/init.json`, 'POST')

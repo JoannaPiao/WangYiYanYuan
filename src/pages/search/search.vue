@@ -16,12 +16,28 @@
     <!--热门搜索-->
     <div class="hotDoor">
       <span>热门搜索</span>
+      <div class="hot-Tj">
+        <ul class="hot-list" >
+          <li class="hot-listItem" v-for="(search,index) in searchList.hotKeywordVOList" :key="index">
+            <a href="javascript:;">{{search.keyword}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {}
+  import {mapState} from 'vuex'
+
+  export default {
+    mounted(){
+      this.$store.dispatch('getSearchList')
+    },
+    computed: {
+      ...mapState(['searchList'])
+    }
+  }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
@@ -60,19 +76,36 @@
           font-size 28px
           margin-right 20px
 
-
-
     .hotDoor
       width 750px
-      height 90px
+      height 404px
       background-color #fff
       line-height 90px
       span
         font-size 28px
         color #999
         margin-left 20px
-
-
+      .hot-Tj
+        width 750px
+        height 316px
+        /*background-color pink*/
+        .hot-list
+          width 720px
+          height 316px
+          display flex
+          /*justify-content space-around*/
+          flex-wrap wrap
+          .hot-listItem
+            width 233px
+            height 47px
+            text-align center
+            line-height 47px
+            a
+              border 1px solid #999
+              border-radius 10px
+              padding 0 8px
+              display inline-block
+              color #333
 
 
 </style>

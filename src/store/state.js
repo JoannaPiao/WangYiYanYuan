@@ -4,5 +4,6 @@
 
 export default {
     list:[],
-    categorys:[]
+    categorys:[],
+    searchList:[],
 }

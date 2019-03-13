@@ -15,14 +15,10 @@
           <router-link :to="'/list/items?listId='+item.id">
             {{item.name}}
           </router-link>
-
         </a>
-
       </div>
       <router-view/>
     </div>
-
-
   </div>
 </template>
 

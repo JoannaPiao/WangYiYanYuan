@@ -1,5 +1,7 @@
 <template>
-    <div>shop Vue</div>
+    <div id="container">
+      
+    </div>
 </template>
 
 <script>
